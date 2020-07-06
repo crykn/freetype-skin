@@ -3,6 +3,20 @@
 This library extends LibGDX asset management with [`FreeTypeSkin`](src/main/java/com/github/acanthite/gdx/graphics/g2d/FreeTypeSkin.java) and [`FreeTypeSkinLoader`](src/main/java/com/github/acanthite/gdx/graphics/g2d/FreeTypeSkinLoader.java) classes, which allow you to specify TTF fronts right in the `uiskin.json` file. You don't need to pack bitmap fonts manually and specify them [via skin parameter](https://stackoverflow.com/a/39174630/13202054).
 Just drop some `.ttf` into your assets folder, set parameters and done.
 
+## Dependencies
+To use freetype-skin in your project just add the jipack repo and the freetype-skin dependency
+```groovy
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+dependencies {
+    implementation 'com.github.acanthite:freetype-skin:0.1-SNAPSHOT'
+}
+```
+
 ## Simple usage
 You will need to load your uiskin.json via `FreeTypeSkin` and pass it to where you needed a `Skin`, just like you would do this with standard `Skin`. 
 
