@@ -2,12 +2,17 @@ package com.github.acanthite.gdx.graphics.g2d;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.Hinting;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 
-
+/**
+ * Deserializes {@link FreeTypeFontParameter} . Specifically all parameters except
+ * {@link FreeTypeFontParameter#packer} and {@link FreeTypeFontParameter#incremental}
+ * @author acanthite
+ */
 class FreeTypeFontParametersDeserializer extends Json.ReadOnlySerializer<FreeTypeFontParameter> {
 
     @Override
