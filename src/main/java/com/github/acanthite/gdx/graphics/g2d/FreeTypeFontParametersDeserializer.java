@@ -2,7 +2,6 @@ package com.github.acanthite.gdx.graphics.g2d;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.Hinting;
 import com.badlogic.gdx.utils.Json;
@@ -11,9 +10,12 @@ import com.badlogic.gdx.utils.JsonValue;
 /**
  * Deserializes {@link FreeTypeFontParameter} . Specifically all parameters except
  * {@link FreeTypeFontParameter#packer} and {@link FreeTypeFontParameter#incremental}
+ *
  * @author acanthite
  */
 class FreeTypeFontParametersDeserializer extends Json.ReadOnlySerializer<FreeTypeFontParameter> {
+
+    private static final String ADVANCED_CHARACTERS = "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~ ¡¢£¤¥¦§¨©ª«¬\u00AD®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿĀāĂăĄąĆćĈĉĊċČčĎďĐđĒēĔĕĖėĘęĚěĜĝĞğĠġĢģĤĥĦħĨĩĪīĬĭĮįİıĲĳĴĵĶķĸĹĺĻļĽľĿŀŁłŃńŅņŇňŉŊŋŌōŎŏŐőŒœŔŕŖŗŘřŚśŜŝŞşŠšŢţŤťŦŧŨũŪūŬŭŮůŰűŲųŴŵŶŷŸŹźŻżŽžſʹ͵ͺͻͼͽ;΄΅Ά·ΈΉΊΌΎΏΐΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩΪΫάέήίΰαβγδεζηθικλμνξοπρςστυφχψωϊϋόύώϐϑϒϓϔϕϖϗϘϙϚϛϜϝϞϟϠϡϢϣϤϥϦϧϨϩϪϫϬϭϮϯϰϱϲϳϴϵ϶ϷϸϹϺϻϼϽϾϿЀЁЂЃЄЅІЇЈЉЊЋЌЍЎЏАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдежзийклмнопрстуфхцчшщъыьэюяѐёђѓєѕіїјљњћќѝўџѠѡѢѣѤѥѦѧѨѩѪѫѬѭѮѯѰѱѲѳѴѵѶѷѸѹѺѻѼѽѾѿҀҁ҂҃҄҅҆҇҈҉ҊҋҌҍҎҏҐґҒғҔҕҖҗҘҙҚқҜҝҞҟҠҡҢңҤҥҦҧҨҩҪҫҬҭҮүҰұҲҳҴҵҶҷҸҹҺһҼҽҾҿӀӁӂӃӄӅӆӇӈӉӊӋӌӍӎӏӐӑӒӓӔӕӖӗӘәӚӛӜӝӞӟӠӡӢӣӤӥӦӧӨөӪӫӬӭӮӯӰӱӲӳӴӵӶӷӸӹӺӻӼӽӾӿԀԁԂԃԄԅԆԇԈԉԊԋԌԍԎԏԐԑԒԓԔԕԖԗԘԙԚԛԜԝԞԟԠԡԢԣԤԥԦԧ           \u200B\u200C\u200D\u200E\u200F‒–—―‖‗‘’‚‛“”„‟†‡•…\u202A\u202B\u202C\u202D\u202E ‰′″‴‹›‼‾⁄⁞\u206A\u206B\u206C\u206D\u206E\u206F₠₡₢₣₤₥₦₧₨₩₫€₭₮₯₰₱₲₳₴₵₹₺ⱠⱡⱢⱣⱤⱥⱦⱧⱨⱩⱪⱫⱬⱭⱱⱲⱳⱴⱵⱶⱷ";
 
     @Override
     public FreeTypeFontParameter read(Json json, JsonValue jsonData, Class type) {
@@ -46,7 +48,7 @@ class FreeTypeFontParametersDeserializer extends Json.ReadOnlySerializer<FreeTyp
         param.padBottom = json.readValue("padBottom", int.class, param.padBottom, jsonData);
         param.padRight = json.readValue("padRight", int.class, param.padRight, jsonData);
 
-        param.characters = json.readValue("characters", String.class, param.characters, jsonData);
+        param.characters = json.readValue("characters", String.class, ADVANCED_CHARACTERS, jsonData);
 
         param.kerning = json.readValue("kerning", boolean.class, param.kerning, jsonData);
 
