@@ -13,7 +13,7 @@ allprojects {
 }
 
 dependencies {
-    implementation 'com.github.acanthite:freetype-skin:0.2'
+    implementation 'com.github.acanthite:freetype-skin:0.3'
 }
 ```
 
@@ -68,7 +68,7 @@ To define bitmap fonts in a skin file, you _must_ specify TTF font via `file` _a
 
 Other than that, you can specify any other property from [FreeTypeFontParameter](https://github.com/libgdx/libgdx/blob/48877d97317ca8063b9bf4479d3c253db417677a/extensions/gdx-freetype/src/com/badlogic/gdx/graphics/g2d/freetype/FreeTypeFontGenerator.java#L740) class, except the [`packer`](https://github.com/libgdx/libgdx/blob/48877d97317ca8063b9bf4479d3c253db417677a/extensions/gdx-freetype/src/com/badlogic/gdx/graphics/g2d/freetype/FreeTypeFontGenerator.java#L778) and the [`incremental`](https://github.com/libgdx/libgdx/blob/48877d97317ca8063b9bf4479d3c253db417677a/extensions/gdx-freetype/src/com/badlogic/gdx/graphics/g2d/freetype/FreeTypeFontGenerator.java#L792).
 
-Any omitted property will simply default to its value as specified in `FreeTypeFontParameter`.
+Any omitted property will simply default to its value as specified in `FreeTypeFontParameter`, except the `characters` which has some more advanced set than the default one.
 
 Here is an example with some advanced properties:
 ```libgdxjson
