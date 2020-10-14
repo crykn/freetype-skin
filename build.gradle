@@ -1,10 +1,10 @@
 plugins {
-    id 'java'
+    id 'java-library'
     id 'maven'
 }
 
 group 'com.github.acanthite.gdx'
-version '0.3'
+version '0.3.1'
 
 sourceSets {
     main {
@@ -19,8 +19,8 @@ repositories {
 }
 
 dependencies {
-    implementation "com.badlogicgames.gdx:gdx:1.9.+"
-    implementation "com.badlogicgames.gdx:gdx-freetype:1.9.+"
+    implementation "com.badlogicgames.gdx:gdx:1.9.11"
+    implementation "com.badlogicgames.gdx:gdx-freetype:1.9.11"
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
